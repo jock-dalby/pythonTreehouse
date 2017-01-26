@@ -27,7 +27,9 @@ print(status_message.format(5, 'dogs'))
 ```
 
 ####function
-```js      greeting = "Hi, this is Jock. Who is this?"
+```js      
+def answer_the_phone():
+  greeting = "Hi, this is Jock. Who is this?"
   print(greeting)
 ```
 
