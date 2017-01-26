@@ -146,3 +146,40 @@ c == d # True
 c is d # False
 # 'is' tests to see if the two values are in the same place in memory (essentially ===)
 ```
+####User input()
+```python
+age = int(input("What's your age?")) #convert the string to a number
+```
+
+####split()
+```python
+'hello'.split() # returns ['hello']
+'hello world'.split() # returns ['hello', 'world']
+'red:green:blue'.split(':') # returns [red', 'green', 'blue]
+
+flavours = ['chocolate', 'mint', 'strawberry']
+', '.join(flavours) # returns 'chocolate', mint, strawberry'
+"My favourite flavours are: {}".format(', '.join(flavours)) # Returns 'My favourite flavours are chocolate, mint, strawberry'
+```
+
+####index()
+```python
+aplha = 'abcde'
+
+alpha.index('a') # returns 0
+'abcabc'.index('a') # returns 0
+'bcabc'.index('a') # returns 2
+
+alpha.index('cd') # returns 2
+alpha.index('ce') # returns 'substring not found'
+
+alpha[0] # returns 'a'
+alpha[2] # returns 'c'
+
+alpha[-2] # returns 'd'
+alpha[-5] # returns 'a'
+
+del alpha[0] # cannot delete from a string
+alpha2 = list(alpha)
+del alpha2[0] # alpha2 is now ['b', 'c', 'd', 'e']
+```
