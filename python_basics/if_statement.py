@@ -26,3 +26,12 @@ else:
 
 if not age > 25000:
   print("Whippersnapper")
+
+# Example 5
+import sys
+
+start = input("Press enter/return to start or Q to quit ").lower()
+if start == 'n':
+    sys.exit()
+else:
+    print("Enjoy the show!")

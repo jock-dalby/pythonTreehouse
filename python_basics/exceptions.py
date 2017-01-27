@@ -15,3 +15,14 @@ def add(a, b):
     return None
   else:
     return float(a) + float(b)
+
+# EXAMPLE 3
+def squared (num):
+    try:
+        return int(num) * int(num)
+    except:
+        return num * len(num)
+
+# squared(5) would return 25
+# squared("2") would return 4
+# squared("tim") would return "timtimtim"
