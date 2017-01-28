@@ -4,7 +4,7 @@
 When starting in Python and just want to play around with some ideas, you can use the Python shell. Sometimes this is called a REPL, R-E-P-L, which stands for
 read–evaluate–print loop. To enter the shell, type 'python' in the console, to exit it, type 'exit()' or 'quit()' commands.
 
-You can do math in the console e.g. 2 + 2 + enter = prints 4, run functions e.g. print("Hello, Treehouse").
+You can do math in the console e.g. 2 + 2 + enter = prints 4, run functions e.g. print('Hello, Treehouse').
 
 Type 'help()' to access the help feature and put a keyword /phrase in the parentheses to search a specific term e.g. help(print), help(str) or help(str.center).
 
@@ -19,7 +19,7 @@ The last common error is the SyntaxError.
 
 ##print()
 ```python
-print("Hello, Treehouse")
+print('Hello, Treehouse')
 ```
 
 ##Integers
@@ -29,26 +29,26 @@ print("Hello, Treehouse")
 round(5.23) # Returns 5
 round(5.73) # Returns 6
 int(5.9) # Returns 5
-int("5") # Returns 5
+int('5') # Returns 5
 ```
 
 ####float()
 ```python
 float(5) # returns 5.0
-float("8.2") # returns 8.2
+float('8.2') # returns 8.2
 ```
 
 ##Strings
 Strings are iterable (we can loop through them with for loops) and immutable (we're not allowed to change them in place).
 ```python
-print("""He's right""") # returns "He's Right"
+print('''He's right''') # returns 'He's Right'
 print('=' * 5) # returns =====
 
-status_message = "Hey we have {} people using the site right now"
+status_message = 'Hey we have {} people using the site right now'
 print(status_message.format(7))
 # returns Hey we have 7 people using the site right now
 
-status_message = "Hey we have {} {} using the site right now"
+status_message = 'Hey we have {} {} using the site right now'
 print(status_message.format(5, 'dogs'))
 # returns Hey we have 5 dogs people using the site right now
 ```
@@ -68,15 +68,15 @@ True + True # Returns 2
 bool(0) # False
 bool([]) # False
 bool([1, 2, 3, 4]) # True
-bool("") # False
-bool("Jock") # True
+bool('') # False
+bool('Jock') # True
 # Anything that empty is false. Anything which has content is true
 ```
 
 ##Variables
 ```python
-my_name = "Jock"
-favourite_colour = "purple"
+my_name = 'Jock'
+favourite_colour = 'purple'
 favourite_number = 13
 
 print(favourite_colour)
@@ -143,7 +143,7 @@ name_2 = names.pop(0) # name_2 now equals 'jock'
 ```python
 flavours = ['chocolate', 'mint', 'strawberry']
 ', '.join(flavours) # returns 'chocolate', mint, strawberry'
-"My favourite flavours are: {}".format(', '.join(flavours)) # Returns 'My favourite flavours are chocolate, mint, strawberry'
+'My favourite flavours are: {}'.format(', '.join(flavours)) # Returns 'My favourite flavours are chocolate, mint, strawberry'
 ```
 
 ####index()
@@ -178,24 +178,24 @@ new_list = my_list.sort() # new_list equals [1, 2, 3, 4, 5]
 ```python
 # Example 1
 def answer_the_phone():
-  greeting = "Hi, this is Jock. Who is this?"
+  greeting = 'Hi, this is Jock. Who is this?'
   print(greeting)
 
 # Example 2
 def lumberjack(name):
-  if name.lower() == "jock":
-    print("Jock's a lumberjack and he's all sweet!")
+  if name.lower() == 'jock':
+    print('Jock\'s a lumberjack and he\'s all sweet!')
   else:
-    print("{} sleeps all night and {} works all day!".format(name, name))
+    print('{} sleeps all night and {} works all day!'.format(name, name))
 
-lumberjack("Jock")
-lumberjack("Nele")
+lumberjack('Jock')
+lumberjack('Nele')
 
 # Example 3
 def lumberjack(name, pronoun):
-    print("{}'s a lumberjack and {} all sweet!").format(name, pronoun)
+    print('{}\'s a lumberjack and {} all sweet!').format(name, pronoun)
 
-lumberjack("Sam", "they're")
+lumberjack('Sam', 'they\'re')
 
 # Example 4
 def average(num1, num2):
@@ -206,8 +206,9 @@ print(avg)
 
 # Example 5
 def printer (count):
-    print("Hi " * count)
+    print('Hi ' * count)
 ```
+
 ##Comparison operators
 ```python
 5 == 5 # True
@@ -227,5 +228,106 @@ c is d # False
 
 ##User input()
 ```python
-age = int(input("What's your age?")) #convert the string to a number
+age = int(input('What\'s your age?')) #convert the string to a number
+```
+
+##Dictionaries
+
+Dictionaries are made up of two pieces, a value that they want to hold onto and a key, the name we want to give to that value. Dictionaries like lists are mutable, so we can change them at will after they're created. But unlike lists dictionaries are unsorted, that means we can't use an index on them or even expect them to always look the same when we print them.
+
+```python
+# Example 1
+course = {'title': 'Python Collections','teacher': {'first_name':'Kenneth', 'last_name': 'Smith'}}
+course['title'] # returns Python Collections
+
+# Example 2
+
+player = dict([
+  ['name', 'Jock'],
+  ['remaining_lives', 3],
+  ['levels', [1, 2, 3, 4]],
+  ['items', {'oranges': 5}]
+  ])
+
+player['last_name'] = 'Dalby' # Add a single key:value pair to player dictionary
+
+player.update({'job': 'Web Developer', 'editor': 'Atom'}) # Add multiple key:value pairs to player dictionary
+
+player['editor'] = 'Webstorm' # Change editor value
+
+# Delete a dictionary entry
+del player['remaining_lives']
+
+# Iterate through a dictionary
+for entry in player:
+  print(entry, player[entry])
+
+# or separately
+# keys
+for key in player.keys():
+  print(key)
+#values
+for value in player.values():
+  print(value)
+#both
+for item in player.items():
+  print(item)
+
+# Example 3
+player = {'weapons': {'sword': True, 'bow': False, 'stick': True}}
+player['weapons']['sword']
+```
+
+####Packing, unpacking & kwargs
+When we talk about packing, we're taking multiple inputs like multiple values and combining them into a single variable. Each value is still represented in the final variable so this isn't like adding two numbers together. When I'm talking about unpacking though, as you can probably guess, it's the opposite action unpacking takes the values in a variable and makes a bunch of new variables from it.
+
+In Python, when you use double asterisks like below on a parameter in a function, Python will pack whatever keyword arguments come into the function into a dictionary. Because you're packing keyword arguments, you'll see this name, kwargs, for keyword arguments, quite often.
+
+```python
+# Example 1
+def packer(**kwargs):
+  print(kwargs)
+
+packer(name='Jock', num=31, orange-pine-nuts=False) # returns {'name':'Jock', 'num': 31, orange-pine-nuts: False}
+
+# Example 2
+def packer(name=None, **kwargs):
+  print(kwargs)
+
+packer(name='Jock', num=31, orange-pine-nuts=False) # returns {'num': 31, orange-pine-nuts: False}
+
+# Example 3
+def unpacker(first_name=None, last_name=None):
+  if first_name and last_name:
+    print('Hi {} {}!'.format(first_name, last_name))
+  else:
+    print('Hi no name!')
+
+unpacker(**{'last_name': 'Dalby', 'first_name': 'Jock'})
+# Because of the two asterisks in front, python took each key from the dict and its value and sent them as keyword arguments to the function.
+```
+
+Write a function named string_factory that accepts a list of dictionaries as an argument. Return a new list of strings made by using ** for each dictionary in the list and the template string provided.
+```python
+template = "Hi, I\'m {name} and I love to eat {food}!"
+
+def string_factory(dicts):
+    strings = []
+    for d in dicts: #<-- iterate over dict list
+        strings.append(template.format(**d)) #<-- Append the new string to the strings list
+    return strings
+```
+I need you to make a function named word_count. It should accept a single argument which will be a string. The function needs to return a dictionary. The keys in the dictionary will be each of the words in the string. The values will be how many times that particular word appears in the string.
+
+```python
+# E.g. word_count("I do not like it Sam I Am") gets back a dictionary like:
+# {'i': 2, 'do': 1, 'it': 1, 'sam': 1, 'like': 1, 'not': 1, 'am': 1}
+# Lowercase the string to make it easier.
+
+import collections
+
+def word_count(word):
+    new_list = word.lower().split()
+    return collections.Counter(new_list)
+
 ```
