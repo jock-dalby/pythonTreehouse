@@ -331,3 +331,43 @@ def word_count(word):
     return collections.Counter(new_list)
 
 ```
+The treehouse_teachers dictionary will look something like: {'Andrew Chalkley': ['jQuery Basics', 'Node.js Basics'], 'Kenneth Love': ['Python Basics', 'Python Collections']}. Each key will be a Teacher and the value will be a list of courses.
+
+```python
+def num_teachers (treehouse_teachers):
+    return len(treehouse_teachers)
+
+#Create a new function named num_courses that will receive the treehouse_teachers dictionary as its only argument. The function should return the total number of courses for all of the teachers.
+def num_courses(treehouse_teachers):
+    counter = 0
+    for key in treehouse_teachers.keys():
+        counter += len(treehouse_teachers[key])
+    return counter
+
+#For this step, make another new function named courses that will, again, take the dictionary of teachers and courses and return a single list of all of the available courses in the dictionary. No teachers, just course names!
+
+def courses(treehouse_teachers):
+    all_courses = []
+    for key in treehouse_teachers.keys():
+        all_courses.extend(treehouse_teachers[key])
+    return all_courses
+
+# Create a function named most_courses that takes our good ol' teacher dictionary. most_courses should return the name of the teacher with the most courses. You might need to hold onto some sort of max count variable.
+
+def most_courses(treehouse_teachers):
+    max_count = 0
+    for key in treehouse_teachers.keys():
+        if len(treehouse_teachers[key]) > max_count:
+            max_count = len(treehouse_teachers[key])
+            top_teacher = key
+    return top_teacher
+
+# Create a function named stats and it'll take our teacher dictionary as its only argument. stats should return a list of lists where the first item in each inner list is the teacher's name and the second item is the number of courses that teacher has. For example, it might return: [["Kenneth Love", 5], ["Craig Dennis", 10]]
+
+def stats(treehouse_teachers):
+    stats_list = []
+    for key in treehouse_teachers.keys():
+        stats_list.append([key, len(treehouse_teachers[key])])
+    return stats_list
+
+```
