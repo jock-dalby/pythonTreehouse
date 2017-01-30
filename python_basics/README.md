@@ -240,8 +240,11 @@ Dictionaries are made up of two pieces, a value that they want to hold onto and 
 course = {'title': 'Python Collections','teacher': {'first_name':'Kenneth', 'last_name': 'Smith'}}
 course['title'] # returns Python Collections
 
-# Example 2
+# Loop through a dictionary and returna  list of tuples
+for key, value in course.items():
+  print("{} and {}".format(key, value))
 
+# Example 2
 player = dict([
   ['name', 'Jock'],
   ['remaining_lives', 3],
@@ -370,4 +373,90 @@ def stats(treehouse_teachers):
         stats_list.append([key, len(treehouse_teachers[key])])
     return stats_list
 
+```
+
+##Tuples
+Tuples are like lists in that each member has an index, they can be looped over and each member can be pretty much any other data type. Tuples, though, can't be changed in place as they're immutable. This also makes them a bit more memory efficient, which is always nice win. We can't add items, we can't pop items off and we can't even call del on our tuples but one fun little gotcha with tuples though, is that you can change the values inside of mutable tuple members. The only thing that I can't do is actually remove that list because that would be changing the tuple. I can do whatever I want to the inside of the list, though.
+
+```python
+my_tuple = (1, 2, 3) # conventional way of declaring a tuple
+my_second_tuple = 1, 2, 3 # but parentheses are not essential. It is the comma that makes the Tuples
+my_value = (5) # This would simply be 5
+
+my_third_tuple = tuple([1, 2, 3]) # pass a list to the tuple function to convert my_third_tuple = (1, 2, 3)
+
+my_third_tuple[0] = 5 # TypeError: 'tuple' object does not support item assignment
+
+my_third_tuple[0] += 2 # TypeError: 'tuple' object does not support item assignment
+
+tuple_with_a_list = (1, 'apple', [3, 4, 5])
+tuple_with_a_list[2][1] = 6 # tuple_with_a_list now equals (1, 'apple', [6, 4, 5])
+```
+
+####Packing and unpacking tuples
+```python
+# Example 1
+a = 5
+b = 20
+a, b = b, a # now a = 20 and b = 5
+
+a = 5
+b = 20
+c = b, a # c is now equal to (5, 20)
+
+# Example 2
+def add(*nums):
+  total = 0
+  for num in nums:
+    total += nums
+  return total
+
+add(5, 5) # 10
+add(32) # 32
+
+# or even better use below as then will know what value type to start total on
+
+def add(base, *args):
+  total = base
+  for num in args:
+    total += num
+  return total
+
+add(5, 20) # 25
+
+# Example 3
+def multiply(base, *args):
+    total = base
+    for arg in args:
+        total *= arg
+    return total
+
+```
+
+Enumerate takes an ordered iterable like a list or a string or a tuple. Then it walks through that iterable and for each item in it gives us back a tuple of the current index and the value at that index.
+```python
+# Example 1
+list(enumerate("abc")) # [(0, 'a'), (1, 'b'), (2, 'c')]
+
+# Example 2
+my_list = [5, 2, 4, 1, 3]
+for index, value in enumerate(my_list):
+  print("{}: {}".format(index, value))
+# returns
+# 0: 5
+# 1: 2
+# 2: 4
+# 3: 1
+# 4: 3
+
+# or
+
+for group in enumerate(my_list):
+  print("{}: {}".format(*group)
+  )
+
+# Example 3
+for index, letter in enumerate('abcdefghijklmnopqrstuvwxyz'):
+    print('{}: {}'.format(index+1, letter)
+    )
 ```
