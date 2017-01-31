@@ -460,3 +460,137 @@ for index, letter in enumerate('abcdefghijklmnopqrstuvwxyz'):
     print('{}: {}'.format(index+1, letter)
     )
 ```
+
+####Challenges
+
+##Challenge 1
+Create a function named stringcases that takes a single string but returns a tuple of different string formats. The formats should be:
+- All uppercase
+- All lowercase
+- Titlecased (first letter is capitalized)
+- Reversed
+
+```python
+def stringcases (my_str):
+    return my_str.upper(), my_str.lower(), my_str.title(), my_str[-1::-1]
+```
+
+##Challenge 2
+Create a function named combo that takes two ordered iterables. These could be tuples, lists, strings, whatever. Your function should return a list of tuples. Each tuple should hold the first item in each iterable, then the second set, then the third, and so on. Assume the iterables will be the same length.
+
+```python
+def combo(iter1, iter2):
+  tup_list = []
+  count = 0
+
+  for thing in iter2:
+    tup = tuple((iter1[count], iter2[count]))
+    tup_list.append(tup)
+    count +=1
+
+  return tup_list
+```
+
+For a more advanced solution, you can use the built-in zip function (covered later) that "zips" two iterables together by returning one item from each iterable as a tuple. Wrapping this in a list() provides the complete solution:
+
+```python
+def combo(iter1, iter2):
+  return list(zip(iter1, iter2))
+```
+
+##Sets
+
+A set is a collection of unique items that belong together for some reason. Each thing can only be in a given set once and Python sets are iterable collections like list and tuples, but each item is unique and the set doesn't have any indexes. It used to be the case that you could only create sets by using the set function, but in modern Python versions you can use the curly braces to directly create a set so long as your set has something in it.
+
+```python
+set([1, 3, 5]) # creates set => {1, 3, 5}
+{1, 3, 5} # creates set => {1, 3, 5}
+```
+If you try to create a blank set though, you'll get a dictionary. In that case you have to use, the set function so that typeset gives you a set.
+
+```python
+type({}) # returns 'dict'
+type(set()) # returns 'set'
+```
+
+Now the order that you put things into sets doesn't matter as sets don't have a defined order or any indexes and we can get them back in a different order; Python sorts the sets in a way that makes sense to Python.
+
+####Adding to a set
+
+```python
+low_primes = {1, 3, 5, 7, 11, 13}
+low_primes.add(17) # low_primes = {1, 3, 5, 7, 11, 13, 17}
+low_primes.update({19, 23}, {2, 29}) # {1, 2, 3, ... 19, 23, 29}
+```
+
+####Removing from a set
+
+```python
+low_primes = {1, 3, 5, 7, 11, 13}
+low_primes.add(4) # low_primes = {1, 3, 4, 5, 7, 11, 13}
+low_primes.remove(4) # low_primes = {1, 3, 5, 7, 11, 13}
+
+one_prime = low_primes.pop()
+```
+
+####Set maths
+
+Sets have several different operations that they can do.
+
+#####Union => All of the items from all of the sets
+```python
+set1 = set(range(10))
+set2 = {1, 2, 3, 5, 7, 11, 13, 17, 19, 23}
+
+set1.union(set2) # => {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 17, 19, 23}
+
+# or can get the same result using the | character
+
+set1 | set2 # => {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 17, 19, 23}
+```
+
+##### Difference => All of the items in the first set that are not in the other sets
+```python
+set1 = set(range(10))
+set2 = {1, 2, 3, 5, 7, 11, 13, 17, 19, 23}
+
+set1.differnece(set2) # => {0, 8, 4, 6, 9}
+set2.difference(set1) # => {19, 17, 11, 13, 23}
+
+# or can get the same result using the - character
+
+set1 - set2 # => {0, 8, 4, 6, 9}
+set2 - set1 # => {19, 17, 11, 13, 23}
+```
+
+#####Intersection => All of the common items between all of the sets
+```python
+set1 = set(range(10))
+set2 = {1, 2, 3, 5, 7, 11, 13, 17, 19, 23}
+
+set1.intersection(set2) # => {1, 2, 3, 5, 7}
+
+# or can get the same result using the & character
+
+set1 & set2 # => {1, 2, 3, 5, 7}
+```
+
+######Symmetric difference => all of the items that are not shared by the two sets
+```python
+set1 = set(range(10))
+set2 = {1, 2, 3, 5, 7, 11, 13, 17, 19, 23}
+
+set1.symmetric_difference(set2) # => {0, 4, 6, 8, 9, 11, 13, 17, 19, 23}
+
+# or can get the same result using the ^ character
+
+set1 ^ set2 # => {0, 4, 6, 8, 9, 11, 13, 17, 19, 23}
+```
+
+#####Example Challenges
+
+Write a function named covers that accepts a single parameter, a set of topics. Have the function return a list of courses from COURSES where the supplied set and the course's value (also a set) overlap.
+
+```python
+
+```
