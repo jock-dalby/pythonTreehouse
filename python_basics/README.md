@@ -587,9 +587,9 @@ set1.symmetric_difference(set2) # => {0, 4, 6, 8, 9, 11, 13, 17, 19, 23}
 set1 ^ set2 # => {0, 4, 6, 8, 9, 11, 13, 17, 19, 23}
 ```
 
-#####Example Challenges
+###Example Challenges
 
-##Challenge 1
+####Challenge 1
 Write a function named covers that accepts a single parameter, a set of topics. Have the function return a list of courses from COURSES where the supplied set and the course's value (also a set) overlap.
 
 For example, covers({"Python"}) would return ["Python Basics"].
@@ -632,7 +632,7 @@ def covers_all (param):
 print(covers_all({"conditions", "input"}))
 ```
 
-##Challenge 2
+####Challenge 2
 
 Our move function takes this three-part tuple player and a direction tuple that's two parts, the x to move and the y (like (-1, 0) would move to the left but not up or down).
 Finish the function so that if the player is being run into a wall, their hp is reduced by 5. Don't let them go past the wall. Consider the grid to be 0-9 in both directions. Don't worry about keeping their hp above 0 either.
@@ -668,7 +668,7 @@ def move(player, direction):
     return x, y, hp
 ```
 
-##Challenge 3
+####Challenge 3
 
 Here's a...weird...set of tiles. I need you to loop through TILES and print out each item. Print each item on the same line unless the item is a double pipe (||). In that case, instead of printing the item, print a new line (\n). Use the end argument to print() to control whether things print on a new line or not.
 
@@ -686,4 +686,27 @@ for tile in TILES:
     else:
         line_end = ""
         print(tile, end=line_end)
+```
+
+##Classes
+
+When we talk about doing object oriented programming, we're talking about using bundles of code that we call objects or classes. Classes let us create predictable objects that we can work with and that line up to a mental model we already have.
+
+####Custom class
+```python
+class Monster:
+  hit_points = 1
+  color = 'yellow'
+  weapon = 'sword'
+```
+Classes, on their own, are usually pretty useless. They're great for holding information but you don't want to change the class every time you need a new copy of it so instead we create and instance of our object. You can think of instances as being copies of our class but we can change each instance independently. Every time we've made a variable so far, we've been making an instance of a class. Python's built in data types, like string, list, and dict are classes and we've been creating new instances when we make a variable. Creating instances of classes is usually pretty simple and as each instance kind of lives in it's own world which means you can work with them however you need to without worrying about the other instances.
+
+####Instance Example
+```python
+henry = Monster()
+type(henry) # returns class Monster
+
+henry.hit_points # returns 1
+henry.hit_points = 5
+henry.hit_points # returns 5
 ```
